@@ -1,0 +1,7 @@
+body { font-family: sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+table { border-collapse: collapse; width: 100%; }
+td, th { border: 1px solid #ccc; padding: 6px; text-align: left; }
+input { margin: 2px; }
+nav a, nav span { margin-right: 1rem; }
+nav form { display: inline; }
+.error { color: #b00020; }

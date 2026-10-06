@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><title>Интернет-магазин</title><link rel="stylesheet" href="/css/style.css"></head>
+<body>
+<%- include("partials/nav") %>
+<h1>Пользователи</h1>
+<table>
+  <tr><th>Имя</th><th>Email</th><th>Роль</th><th></th></tr>
+  <% users.forEach(u => { %>
+  <tr>
+    <td><%= u.name %></td><td><%= u.email %></td><td><%= u.role %></td>
+    <td><form method="POST" action="/users/<%= u._id %>?_method=DELETE"><button>Удалить</button></form></td>
+  </tr>
+  <% }) %>
+</table>
+<h2>Новый пользователь</h2>
+<form method="POST" action="/users">
+  <input name="name" placeholder="Имя" required minlength="2">
+  <input name="email" type="email" placeholder="Email" required>
+  <input name="password" type="password" placeholder="Пароль (мин. 8)" required minlength="8">
+  <button>Создать</button>
+</form>
+</body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><title>Интернет-магазин</title><link rel="stylesheet" href="/css/style.css"></head>
+<body>
+<%- include("partials/nav") %>
+<h1>Вход и регистрация</h1>
+<% if (error) { %><p class="error"><%= error %></p><% } %>
+<h2>Вход</h2>
+<form method="POST" action="/auth/login">
+  <input name="email" type="email" placeholder="Email" required>
+  <input name="password" type="password" placeholder="Пароль" required>
+  <button>Войти</button>
+</form>
+<h2>Регистрация</h2>
+<form method="POST" action="/auth/register">
+  <input name="name" placeholder="Имя" required minlength="2">
+  <input name="email" type="email" placeholder="Email" required>
+  <input name="password" type="password" placeholder="Пароль (мин. 8)" required minlength="8">
+  <button>Зарегистрироваться</button>
+</form>
+</body></html>

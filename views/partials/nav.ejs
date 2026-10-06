@@ -1,0 +1,11 @@
+<nav>
+  <a href="/">Главная</a>
+  <a href="/products">Товары</a>
+  <% if (user && user.role === 'admin') { %><a href="/users">Пользователи</a><% } %>
+  <% if (user) { %>
+    <span><%= user.name %> (<%= user.role %>)</span>
+    <form method="POST" action="/auth/logout"><button>Выйти</button></form>
+  <% } else { %>
+    <a href="/auth/login">Войти</a>
+  <% } %>
+</nav>

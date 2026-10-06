@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><title>Интернет-магазин</title><link rel="stylesheet" href="/css/style.css"></head>
+<body>
+<%- include("partials/nav") %>
+<h1>Товары</h1>
+<table>
+  <tr><th>Название</th><th>Описание</th><th>Цена</th><th>Остаток</th><% if (user && user.role === 'admin') { %><th></th><% } %></tr>
+  <% products.forEach(p => { %>
+  <tr>
+    <td><%= p.title %></td><td><%= p.description %></td><td><%= p.price %></td><td><%= p.stock %></td>
+    <% if (user && user.role === 'admin') { %>
+    <td><form method="POST" action="/products/<%= p._id %>?_method=DELETE"><button>Удалить</button></form></td>
+    <% } %>
+  </tr>
+  <% }) %>
+</table>
+<% if (user && user.role === 'admin') { %>
+<h2>Добавить товар</h2>
+<form method="POST" action="/products">
+  <input name="title" placeholder="Название" required>
+  <input name="description" placeholder="Описание">
+  <input name="price" type="number" step="0.01" min="0" placeholder="Цена" required>
+  <input name="stock" type="number" min="0" placeholder="Остаток">
+  <button>Создать</button>
+</form>
+<% } %>
+</body></html>
